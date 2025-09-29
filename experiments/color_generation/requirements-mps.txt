@@ -1,0 +1,10 @@
+# MPS-enabled PyTorch for macOS Apple Silicon
+# Use this for M1/M2/M3 Macs with Metal Performance Shaders
+
+# PyTorch with MPS support
+torch>=2.0.0
+torchvision>=0.15.0
+torchaudio>=2.0.0
+
+# macOS-specific utilities
+psutil>=5.9.0  # System monitoring for unified memory

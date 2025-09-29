@@ -1,0 +1,54 @@
+# Configuration for CPU-only execution (fallback)
+# Copy this to config.yaml when GPU is not available or for testing
+
+experiment:
+  name: "color_generation_mcp"
+  description: "Analyze hidden states during MCP tool calling for color generation"
+  version: "0.1.0"
+
+model:
+  backend: "transformers"
+  model_name: "microsoft/DialoGPT-medium"  # Starting point - experiment with others
+  device: "cpu"  # CPU-only execution
+  torch_dtype: "float32"  # Standard precision for CPU
+  load_in_8bit: false  # Not recommended for CPU
+  trust_remote_code: false
+
+generation:
+  max_new_tokens: 50
+  do_sample: true
+  temperature: 0.7
+  top_p: 0.9
+
+analysis:
+  extract_hidden_states: true
+  target_layers: [-1, -2, -3]  # Last 3 layers
+  extract_for_tokens: "output_only"  # Focus on generated tokens
+  save_raw_states: false  # Set true for detailed analysis, false for storage efficiency
+
+mcp:
+  tools_directory: "src/tools"
+  timeout: 60  # Longer timeout for CPU processing
+
+tasks:
+  colors:
+    - "red"
+    - "blue"
+    - "green"
+    - "yellow"
+    - "purple"
+    - "orange"
+    - "white"
+    - "black"
+
+  prompt_templates:
+    - "Generate {color} color using the RGB tool."
+    - "Please create {color} color."
+    - "Show me {color} using RGB values."
+
+  repetitions: 3  # Fewer repetitions for CPU to save time
+
+output:
+  results_dir: "results"
+  save_intermediate: true
+  log_level: "INFO"

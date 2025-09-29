@@ -1,0 +1,10 @@
+# CUDA-enabled PyTorch for Linux/WSL2
+# Use this for systems with NVIDIA GPUs and CUDA support
+
+# PyTorch with CUDA 12.1 support
+torch>=2.0.0 --index-url https://download.pytorch.org/whl/cu121
+torchvision>=0.15.0 --index-url https://download.pytorch.org/whl/cu121
+torchaudio>=2.0.0 --index-url https://download.pytorch.org/whl/cu121
+
+# CUDA-specific optimizations
+nvidia-ml-py3>=7.352.0  # NVIDIA GPU monitoring

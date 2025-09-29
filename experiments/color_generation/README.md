@@ -26,18 +26,81 @@ The LLM receives prompts requesting color generation:
 
 ## Setup Instructions
 
-### 1. Install Dependencies
+### 1. Platform-Specific Setup
+
+Choose the setup method based on your operating system and hardware:
+
+#### 🐧 Linux/WSL2 Users (CUDA Recommended)
+
 ```bash
 cd experiments/color_generation
+
+# Install base dependencies
 pip install -r requirements.txt
+
+# Install CUDA-enabled PyTorch
+pip install -r requirements-cuda.txt
+
+# Copy CUDA-optimized configuration
+cp config-examples/config-cuda.yaml config.yaml
+
+# Verify GPU support
+python -c "import torch; print(f'CUDA available: {torch.cuda.is_available()}')"
 ```
 
-### 2. Configure Model
-Edit `config.yaml` to specify your chosen model:
+#### 🍎 macOS Apple Silicon Users (MPS Recommended)
+
+```bash
+cd experiments/color_generation
+
+# Install base dependencies
+pip install -r requirements.txt
+
+# Install MPS-enabled PyTorch
+pip install -r requirements-mps.txt
+
+# Copy MPS-optimized configuration
+cp config-examples/config-mps.yaml config.yaml
+
+# Verify MPS support
+python -c "import torch; print(f'MPS available: {torch.backends.mps.is_available()}')"
+```
+
+#### 💻 CPU-Only Setup (All Platforms)
+
+```bash
+cd experiments/color_generation
+
+# Install base dependencies only
+pip install -r requirements.txt
+
+# Copy CPU configuration
+cp config-examples/config-cpu.yaml config.yaml
+
+# Verify installation
+python -c "import torch; print(f'PyTorch version: {torch.__version__}')"
+```
+
+#### 🐍 Conda Users (Alternative)
+
+```bash
+cd experiments/color_generation
+
+# Create conda environment
+conda env create -f environment.yml
+conda activate llm-analysis
+
+# Then follow platform-specific PyTorch installation above
+```
+
+### 2. Configuration Customization
+
+After copying the appropriate config template, you can customize:
+
 ```yaml
 model:
-  model_name: "your-chosen-model"
-  device: "cuda"  # or "cpu"
+  model_name: "your-chosen-model"  # See docs/model-candidates.md for options
+  # device and torch_dtype are already optimized for your platform
 ```
 
 ### 3. Test Tools
@@ -96,3 +159,57 @@ This experiment will establish baseline methodologies for:
 - Comparative analysis across models and tasks
 
 Results will inform design of future, more complex experiments in this research platform.
+
+## Team Collaboration Guidelines
+
+### Environment Consistency
+
+When working in a team with mixed operating systems, follow these guidelines:
+
+#### Sharing Configuration Files
+- **DO**: Share the base `config.yaml` with model and experiment settings
+- **DON'T**: Share platform-specific device or torch_dtype settings
+- **RECOMMENDED**: Document your platform in issue comments when reporting results
+
+#### Reproducing Results
+Different platforms may produce slightly different results due to:
+- **Precision differences**: CUDA (float16) vs MPS (float32) vs CPU (float32)
+- **Hardware variations**: Different GPU architectures or memory configurations
+- **Library versions**: Platform-specific PyTorch builds
+
+#### Reporting Issues
+When creating GitHub issues, always include:
+```
+## Environment Info
+- Platform: Linux/WSL2/macOS/Windows
+- Hardware: GPU model or "CPU-only"
+- Python: [version]
+- PyTorch: [version]
+- Config: [config-cuda.yaml/config-mps.yaml/config-cpu.yaml]
+```
+
+#### Best Practices
+1. **Consistent base requirements**: All team members use the same `requirements.txt`
+2. **Platform-appropriate config**: Use the config template for your platform
+3. **Document deviations**: Note any custom changes in issue descriptions
+4. **Version control**: Only commit platform-independent files
+5. **Results comparison**: Account for expected platform differences in analysis
+
+### Troubleshooting Common Team Issues
+
+#### "My results don't match yours"
+1. Verify you're using the correct config template for your platform
+2. Check PyTorch installation with verification commands above
+3. Compare model and generation settings (not device-specific ones)
+4. Consider precision differences between platforms
+
+#### "The experiment won't run"
+1. Verify platform setup was completed correctly
+2. Check that config.yaml exists (should be copied from config-examples/)
+3. Ensure all requirements files were installed for your platform
+4. Run verification commands to check PyTorch installation
+
+#### "Performance is very slow"
+- **Linux/WSL2**: Verify CUDA is working with `nvidia-smi`
+- **macOS**: Verify MPS is enabled and available
+- **All platforms**: Consider using CPU config for small tests
