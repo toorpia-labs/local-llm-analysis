@@ -29,7 +29,7 @@
 - **応答変動性**: あり
 
 ### 実行ログ
-**スクリプト**: `scripts/run_100_trials.py`による出力
+**スクリプト**: `scripts/run_red_experiment.py`による出力
 
 ```
 2025-09-29 23:19:54,964 - INFO - Progress: 100/100 completed, Success rate: 90.0%
@@ -172,7 +172,7 @@ analysis:
 
 #### メイン実験の実行
 ```bash
-python scripts/run_100_trials.py
+python scripts/run_red_experiment.py
 ```
 
 **実行詳細**:
@@ -182,7 +182,7 @@ python scripts/run_100_trials.py
 4. **結果保存**: JSON形式で`results/results_YYYYMMDD_HHMMSS.dat`に出力
 
 **本実験での対応**:
-- **使用スクリプト**: `scripts/run_100_trials.py`
+- **使用スクリプト**: `scripts/run_red_experiment.py`
 - **生成結果ファイル**: `results/results_20250929_231409.dat`
 - **実行日時**: 2025年9月29日 23:14-23:19
 
@@ -377,8 +377,8 @@ python scripts/test_generation.py --prompt "Generate red color"
 
 ### 結果ファイル詳細
 - **ファイル名**: `results/results_20250929_231409.dat`
-- **生成スクリプト**: `scripts/run_100_trials.py`
-- **実行コマンド**: `python scripts/run_100_trials.py`
+- **生成スクリプト**: `scripts/run_red_experiment.py`
+- **実行コマンド**: `python scripts/run_red_experiment.py`
 - **フォーマット**: JSON形式での全試行結果を含む
 - **ファイルサイズ**: 約15KB（100試行分のデータ）
 
