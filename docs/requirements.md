@@ -34,10 +34,32 @@ This document outlines the hardware and software requirements for running the lo
 
 ### Core Dependencies
 - **Python**: 3.8 or higher (3.10+ recommended)
-- **Operating System**:
-  - Linux (Ubuntu 20.04+ recommended)
-  - Windows 10/11
-  - macOS 10.15+
+
+### Operating System Requirements
+
+#### 🥇 Linux (Highly Recommended)
+- **Ubuntu 20.04+** (most stable)
+- **CentOS 8+** / **RHEL 8+** (enterprise environments)
+- **Arch Linux** (advanced users)
+
+#### 🖥️ Windows
+**Strongly Recommended**: **WSL2 + Ubuntu 22.04**
+- Linux environment compatibility with maximum stability
+- CUDA-WSL support for full GPU utilization
+- Improved development efficiency and easier troubleshooting
+
+**Alternative**: **Windows 10/11 Native**
+- Potential compatibility issues with some ML libraries
+- PowerShell and cmd usage requirements
+- Path management and filesystem differences
+
+#### 🍎 macOS
+**Intel Mac**: **macOS 10.15+** (full support)
+
+**Apple Silicon (M1/M2/M3)**: **macOS 11.0+**
+- Metal Performance Shaders (MPS) support
+- ARM64 architecture - verify library compatibility
+- Rosetta 2 fallback for Intel-based libraries
 
 ### CUDA Requirements (for GPU acceleration)
 - **CUDA Toolkit**: 11.8 or 12.1+

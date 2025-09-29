@@ -68,7 +68,58 @@ python scripts/test_generation.py --help
 
 ## Windows
 
-### Prerequisites Installation
+**IMPORTANT**: For Windows users, we **strongly recommend WSL2 + Ubuntu** for the best compatibility and performance. Native Windows installation is provided as an alternative.
+
+### Option A: WSL2 + Ubuntu (Strongly Recommended) {#wsl2-setup}
+
+WSL2 provides a Linux environment on Windows with excellent performance and compatibility.
+
+#### 1. Enable WSL2
+```powershell
+# Run PowerShell as Administrator
+wsl --install
+# This installs WSL2 and Ubuntu by default
+```
+
+#### 2. Install Ubuntu 22.04
+```powershell
+# If you need a specific version
+wsl --install -d Ubuntu-22.04
+```
+
+#### 3. Setup Ubuntu Environment
+```bash
+# Inside WSL2 Ubuntu terminal
+sudo apt update && sudo apt upgrade -y
+
+# Install Python and development tools
+sudo apt install python3.10 python3.10-venv python3.10-dev python3-pip git -y
+```
+
+#### 4. GPU Support (CUDA-WSL)
+```bash
+# Install NVIDIA driver on Windows host (not in WSL2)
+# Download from: https://www.nvidia.com/drivers/
+
+# In WSL2, verify CUDA-WSL support
+nvidia-smi  # Should show GPU information
+
+# Install CUDA toolkit in WSL2
+wget https://developer.download.nvidia.com/compute/cuda/repos/wsl-ubuntu/x86_64/cuda-keyring_1.0-1_all.deb
+sudo dpkg -i cuda-keyring_1.0-1_all.deb
+sudo apt-get update
+sudo apt-get install cuda-toolkit-12-1
+```
+
+#### 5. VS Code Integration
+```bash
+# Install VS Code on Windows, then add WSL extension
+# VS Code will automatically detect and connect to WSL2
+```
+
+### Option B: Native Windows Installation
+
+#### Prerequisites Installation
 
 #### Python Installation
 1. Download Python 3.10+ from [python.org](https://www.python.org/downloads/)
@@ -139,6 +190,15 @@ python scripts\test_generation.py --help
 
 ## macOS
 
+macOS installation varies depending on your hardware. Both Intel and Apple Silicon Macs are supported.
+
+### Check Your Mac Type
+```bash
+# Check your Mac architecture
+uname -m
+# Output: x86_64 (Intel) or arm64 (Apple Silicon)
+```
+
 ### Prerequisites Installation
 
 #### Homebrew Installation
@@ -179,28 +239,48 @@ pip install -r requirements.txt
 pip install torch torchvision torchaudio
 ```
 
-### Apple Silicon (M1/M2) Considerations
+### Apple Silicon (M1/M2/M3) Considerations
+
+Apple Silicon Macs provide excellent performance for ML workloads with proper configuration.
 
 #### Metal Performance Shaders (MPS)
-Recent PyTorch versions support Apple's Metal Performance Shaders:
+PyTorch supports Apple's Metal Performance Shaders for GPU acceleration:
 
 ```bash
 # Verify MPS support
 python -c "import torch; print(f'MPS available: {torch.backends.mps.is_available()}')"
 ```
 
-Update your config.yaml:
+#### Configuration for Apple Silicon
+Update your `config.yaml`:
 ```yaml
 model:
   device: "mps"  # Use Apple Metal Performance Shaders
-  torch_dtype: "float32"  # MPS doesn't support float16 yet
+  torch_dtype: "float32"  # MPS requires float32
+  load_in_8bit: false     # Not supported on MPS
 ```
 
-#### Memory Management
-Apple Silicon Macs have unified memory. Monitor usage:
+#### Performance Optimization
 ```bash
-# Monitor memory usage
+# Monitor unified memory usage
 top -pid $(pgrep Python)
+
+# Activity Monitor can also show memory pressure
+# Keep memory pressure in green/yellow zones
+```
+
+#### Known Limitations
+- **float16 precision**: Not fully supported, use float32
+- **Quantization**: 8-bit/4-bit quantization may not work
+- **Some libraries**: May fall back to CPU for unsupported operations
+
+#### Troubleshooting
+```bash
+# If MPS issues occur, fall back to CPU
+export PYTORCH_ENABLE_MPS_FALLBACK=1
+
+# Check for ARM64 vs x86_64 library conflicts
+python -c "import torch; print(f'PyTorch built for: {torch.__version__}')"
 ```
 
 ### Verification

@@ -2,6 +2,34 @@
 
 本リポジトリのドキュメント一覧です。目的に応じて適切なガイドをご参照ください。
 
+## 🖥️ OS別推奨環境
+
+機械学習研究では**Linux環境**が最も安定して動作します。以下の推奨に従うことで、トラブルを最小限に抑えることができます。
+
+### Windows ユーザー
+**🥇 強く推奨**: **WSL2 + Ubuntu 22.04**
+- ✅ Linux環境での最大互換性
+- ✅ CUDA-WSL対応でGPU活用可能
+- ✅ 開発効率とトラブル解決が容易
+- 📖 詳細: [WSL2セットアップ](installation-os-specific.md#wsl2-setup)
+
+**🥈 代替案**: ネイティブWindows
+- ⚠️ 一部ライブラリの互換性問題あり
+- 📖 詳細: [Windows直接インストール](installation-os-specific.md#windows)
+
+### macOS ユーザー
+**Intel Mac**: ネイティブ環境で問題なし
+**Apple Silicon (M1/M2/M3)**: Metal Performance Shaders (MPS) 対応
+- ✅ ネイティブ環境推奨
+- ⚠️ 一部ARM64未対応ライブラリに注意
+- 📖 詳細: [macOS環境構築](installation-os-specific.md#macos)
+
+### Linux ユーザー
+**🥇 最適**: Ubuntu 20.04+
+- ✅ 全機能フル対応、推奨継続
+
+---
+
 ## 🚀 新規参加者向け（推奨読書順）
 
 ### 1. [GitHub基本ガイド](github-guide.md)
