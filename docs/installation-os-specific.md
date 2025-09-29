@@ -2,9 +2,40 @@
 
 This guide provides detailed installation instructions for different operating systems.
 
-## Linux (Ubuntu/Debian)
+## Table of Contents
 
-### Prerequisites Installation
+- [1. Linux (Ubuntu/Debian)](#1-linux-ubuntudebian)
+  - [1.1 Prerequisites Installation](#11-prerequisites-installation)
+  - [1.2 Environment Setup](#12-environment-setup)
+  - [1.3 Verification](#13-verification)
+- [2. Windows](#2-windows)
+  - [2.1 Option A: WSL2 + Ubuntu (Strongly Recommended)](#21-option-a-wsl2--ubuntu-strongly-recommended)
+  - [2.2 Option B: Native Windows Installation](#22-option-b-native-windows-installation)
+  - [2.3 Environment Setup](#23-environment-setup)
+  - [2.4 PowerShell Execution Policy (if needed)](#24-powershell-execution-policy-if-needed)
+  - [2.5 Verification](#25-verification)
+- [3. macOS](#3-macos)
+  - [3.1 Check Your Mac Type](#31-check-your-mac-type)
+  - [3.2 Prerequisites Installation](#32-prerequisites-installation)
+  - [3.3 Environment Setup](#33-environment-setup)
+  - [3.4 Apple Silicon (M1/M2/M3) Considerations](#34-apple-silicon-m1m2m3-considerations)
+  - [3.5 Verification](#35-verification)
+- [4. Docker Setup (Cross-Platform)](#4-docker-setup-cross-platform)
+  - [4.1 Dockerfile](#41-dockerfile)
+  - [4.2 Docker Commands](#42-docker-commands)
+- [5. Common Issues by OS](#5-common-issues-by-os)
+  - [5.1 Linux Issues](#51-linux-issues)
+  - [5.2 Windows Issues](#52-windows-issues)
+  - [5.3 macOS Issues](#53-macos-issues)
+- [6. Performance Optimization by OS](#6-performance-optimization-by-os)
+  - [6.1 Linux](#61-linux)
+  - [6.2 Windows](#62-windows)
+  - [6.3 macOS](#63-macos)
+- [7. Next Steps](#7-next-steps)
+
+## 1. Linux (Ubuntu/Debian)
+
+### 1.1 Prerequisites Installation
 
 #### System Updates
 ```bash
@@ -41,7 +72,7 @@ echo 'export LD_LIBRARY_PATH=/usr/local/cuda/lib64:$LD_LIBRARY_PATH' >> ~/.bashr
 source ~/.bashrc
 ```
 
-### Environment Setup
+### 1.2 Environment Setup
 ```bash
 # Clone repository
 git clone <repository-url>
@@ -59,18 +90,18 @@ pip install -r requirements.txt
 pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu121
 ```
 
-### Verification
+### 1.3 Verification
 ```bash
 # Test installation
 python -c "import torch; print(f'CUDA available: {torch.cuda.is_available()}')"
 python scripts/test_generation.py --help
 ```
 
-## Windows
+## 2. Windows
 
 **IMPORTANT**: For Windows users, we **strongly recommend WSL2 + Ubuntu** for the best compatibility and performance. Native Windows installation is provided as an alternative.
 
-### Option A: WSL2 + Ubuntu (Strongly Recommended) {#wsl2-setup}
+### 2.1 Option A: WSL2 + Ubuntu (Strongly Recommended) {#wsl2-setup}
 
 WSL2 provides a Linux environment on Windows with excellent performance and compatibility.
 
@@ -117,7 +148,7 @@ sudo apt-get install cuda-toolkit-12-1
 # VS Code will automatically detect and connect to WSL2
 ```
 
-### Option B: Native Windows Installation
+### 2.2 Option B: Native Windows Installation
 
 #### Prerequisites Installation
 
@@ -156,7 +187,7 @@ sudo apt-get install cuda-toolkit-12-1
    nvidia-smi
    ```
 
-### Environment Setup
+### 2.3 Environment Setup
 ```cmd
 REM Clone repository
 git clone <repository-url>
@@ -174,32 +205,32 @@ REM Install PyTorch with CUDA (if GPU available)
 pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu121
 ```
 
-### PowerShell Execution Policy (if needed)
+### 2.4 PowerShell Execution Policy (if needed)
 If you encounter execution policy errors:
 ```powershell
 # Run PowerShell as Administrator
 Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
 ```
 
-### Verification
+### 2.5 Verification
 ```cmd
 REM Test installation
 python -c "import torch; print(f'CUDA available: {torch.cuda.is_available()}')"
 python scripts\test_generation.py --help
 ```
 
-## macOS
+## 3. macOS
 
 macOS installation varies depending on your hardware. Both Intel and Apple Silicon Macs are supported.
 
-### Check Your Mac Type
+### 3.1 Check Your Mac Type
 ```bash
 # Check your Mac architecture
 uname -m
 # Output: x86_64 (Intel) or arm64 (Apple Silicon)
 ```
 
-### Prerequisites Installation
+### 3.2 Prerequisites Installation
 
 #### Homebrew Installation
 ```bash
@@ -221,7 +252,7 @@ git --version
 xcode-select --install
 ```
 
-### Environment Setup
+### 3.3 Environment Setup
 ```bash
 # Clone repository
 git clone <repository-url>
@@ -239,7 +270,7 @@ pip install -r requirements.txt
 pip install torch torchvision torchaudio
 ```
 
-### Apple Silicon (M1/M2/M3) Considerations
+### 3.4 Apple Silicon (M1/M2/M3) Considerations
 
 Apple Silicon Macs provide excellent performance for ML workloads with proper configuration.
 
@@ -283,18 +314,18 @@ export PYTORCH_ENABLE_MPS_FALLBACK=1
 python -c "import torch; print(f'PyTorch built for: {torch.__version__}')"
 ```
 
-### Verification
+### 3.5 Verification
 ```bash
 # Test installation
 python -c "import torch; print(torch.__version__)"
 python scripts/test_generation.py --help
 ```
 
-## Docker Setup (Cross-Platform)
+## 4. Docker Setup (Cross-Platform)
 
 For consistent environments across systems:
 
-### Dockerfile
+### 4.1 Dockerfile
 ```dockerfile
 FROM python:3.10-slim
 
@@ -320,7 +351,7 @@ COPY experiments/color_generation/ .
 CMD ["python", "scripts/test_generation.py"]
 ```
 
-### Docker Commands
+### 4.2 Docker Commands
 ```bash
 # Build image
 docker build -t llm-analysis .
@@ -332,9 +363,9 @@ docker run -it --rm llm-analysis
 docker run --gpus all -it --rm llm-analysis
 ```
 
-## Common Issues by OS
+## 5. Common Issues by OS
 
-### Linux Issues
+### 5.1 Linux Issues
 
 #### Permission Denied
 ```bash
@@ -349,7 +380,7 @@ export LD_LIBRARY_PATH=/usr/local/cuda/lib64:$LD_LIBRARY_PATH
 source ~/.bashrc
 ```
 
-### Windows Issues
+### 5.2 Windows Issues
 
 #### Long Path Names
 Enable long paths in Windows:
@@ -363,7 +394,7 @@ Add exclusions for:
 - Virtual environment directory
 - Project directory
 
-### macOS Issues
+### 5.3 macOS Issues
 
 #### SSL Certificate Errors
 ```bash
@@ -377,24 +408,24 @@ Add exclusions for:
 sudo chown -R $(whoami) $(brew --prefix)/*
 ```
 
-## Performance Optimization by OS
+## 6. Performance Optimization by OS
 
-### Linux
+### 6.1 Linux
 - Use `taskset` for CPU affinity
 - Configure GPU power management
 - Use `numactl` for NUMA systems
 
-### Windows
+### 6.2 Windows
 - Set high performance power plan
 - Disable Windows Defender real-time scanning for project directory
 - Use Windows Terminal for better console experience
 
-### macOS
+### 6.3 macOS
 - Use Activity Monitor to check resource usage
 - Consider thermal throttling on MacBooks
 - Enable "Prevent computer from sleeping" during long experiments
 
-## Next Steps
+## 7. Next Steps
 
 After completing OS-specific setup:
 

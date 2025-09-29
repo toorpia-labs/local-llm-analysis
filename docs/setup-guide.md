@@ -2,24 +2,43 @@
 
 This guide provides step-by-step instructions for setting up your development environment to run local LLM analysis experiments.
 
-## Prerequisites
+## Table of Contents
+
+- [1. Prerequisites](#1-prerequisites)
+- [2. Quick Start](#2-quick-start)
+  - [2.1 Clone the Repository](#21-clone-the-repository)
+  - [2.2 Navigate to Experiment Directory](#22-navigate-to-experiment-directory)
+  - [2.3 Set Up Python Environment](#23-set-up-python-environment)
+  - [2.4 Verify Installation](#24-verify-installation)
+- [3. Detailed Setup Instructions](#3-detailed-setup-instructions)
+  - [3.1 Python Environment Management](#31-python-environment-management)
+  - [3.2 GPU Setup (Recommended)](#32-gpu-setup-recommended)
+  - [3.3 HuggingFace Hub Setup](#33-huggingface-hub-setup)
+  - [3.4 Configuration](#34-configuration)
+  - [3.5 Testing Your Setup](#35-testing-your-setup)
+- [4. Troubleshooting](#4-troubleshooting)
+  - [4.1 Common Issues](#41-common-issues)
+  - [4.2 Performance Optimization](#42-performance-optimization)
+  - [4.3 Getting Help](#43-getting-help)
+
+## 1. Prerequisites
 
 Before starting, ensure your system meets the [requirements](requirements.md).
 
-## Quick Start
+## 2. Quick Start
 
-### 1. Clone the Repository
+### 2.1 Clone the Repository
 ```bash
 git clone <repository-url>
 cd local-llm-analysis
 ```
 
-### 2. Navigate to Experiment Directory
+### 2.2 Navigate to Experiment Directory
 ```bash
 cd experiments/color_generation
 ```
 
-### 3. Set Up Python Environment
+### 2.3 Set Up Python Environment
 Choose one of the following methods:
 
 #### Option A: Using venv (Recommended)
@@ -47,14 +66,14 @@ conda activate llm-analysis
 pip install -r requirements.txt
 ```
 
-### 4. Verify Installation
+### 2.4 Verify Installation
 ```bash
 python scripts/test_generation.py --help
 ```
 
-## Detailed Setup Instructions
+## 3. Detailed Setup Instructions
 
-### Python Environment Management
+### 3.1 Python Environment Management
 
 #### Virtual Environment Best Practices
 - Always use a virtual environment to avoid package conflicts
@@ -74,7 +93,7 @@ python -c "import torch; print(f'PyTorch: {torch.__version__}')"
 python -c "import transformers; print(f'Transformers: {transformers.__version__}')"
 ```
 
-### GPU Setup (Recommended)
+### 3.2 GPU Setup (Recommended)
 
 #### CUDA Installation
 1. **Check GPU compatibility**:
@@ -107,7 +126,7 @@ pip install torch torchvision torchaudio --index-url https://download.pytorch.or
 python -c "import torch; print(f'CUDA available: {torch.cuda.is_available()}')"
 ```
 
-### HuggingFace Hub Setup
+### 3.3 HuggingFace Hub Setup
 
 #### Authentication (Optional but Recommended)
 Some models require authentication or provide faster downloads:
@@ -131,7 +150,7 @@ export HF_HOME="/path/to/your/cache"
 python -c "from transformers import file_utils; print(file_utils.TRANSFORMERS_CACHE)"
 ```
 
-### Configuration
+### 3.4 Configuration
 
 #### Model Configuration
 Edit `config.yaml` to match your system:
@@ -158,7 +177,7 @@ generation:
   max_new_tokens: 20      # Reduce for less memory usage
 ```
 
-### Testing Your Setup
+### 3.5 Testing Your Setup
 
 #### Basic Functionality Test
 ```bash
@@ -178,9 +197,9 @@ nvidia-smi -l 1  # Run in separate terminal
 python scripts/test_generation.py --model microsoft/DialoGPT-medium
 ```
 
-## Troubleshooting
+## 4. Troubleshooting
 
-### Common Issues
+### 4.1 Common Issues
 
 #### Import Errors
 ```bash
@@ -217,7 +236,7 @@ nvidia-smi
 wmic OS get TotalVisibleMemorySize,FreePhysicalMemory /format:list
 ```
 
-### Performance Optimization
+### 4.2 Performance Optimization
 
 #### For Limited VRAM
 - Use `torch_dtype: "float16"`
@@ -234,7 +253,7 @@ wmic OS get TotalVisibleMemorySize,FreePhysicalMemory /format:list
 - Move cache to SSD if available
 - Pre-download models during setup
 
-### Getting Help
+### 4.3 Getting Help
 
 If you encounter issues:
 
