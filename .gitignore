@@ -71,3 +71,16 @@ experiments/*/secrets.yaml
 *.tmp
 temp/
 tmp/
+
+# AI assistant files
+CLAUDE.md
+.claude_code/
+.cursor/
+.cline/
+*_ai_output.*
+*_ai_response.*
+claude_conversation/
+ai_generated_*
+claude_draft_*
+ai_draft_*
+CLAUDE_TEMP.md
