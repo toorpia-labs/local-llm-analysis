@@ -7,11 +7,11 @@ experiment:
   
 model:
   backend: "transformers"
-  model_name: "microsoft/DialoGPT-medium"  # Starting point - experiment with others
+  model_name: "microsoft/Phi-4-mini-instruct"  # Phi-4-mini-instruct for color generation experiment
   device: "auto"  # auto, cpu, cuda, cuda:0
   torch_dtype: "float16"
   load_in_8bit: false
-  trust_remote_code: false
+  trust_remote_code: true
   
 generation:
   max_new_tokens: 50
@@ -41,11 +41,11 @@ tasks:
     - "black"
     
   prompt_templates:
-    - "Generate {color} color using the RGB tool."
-    - "Please create {color} color."
-    - "Show me {color} using RGB values."
+    - "Output the {color} color as RGB values in format: rgb(red, green, blue)"
+    - "What are the RGB values for {color}? Answer as: rgb(r, g, b)"
+    - "Generate {color} color. Use format: RGB({color}_red, {color}_green, {color}_blue)"
     
-  repetitions: 5  # Start small for initial testing
+  repetitions: 100  # 100 trials for success rate analysis
   
 output:
   results_dir: "results"

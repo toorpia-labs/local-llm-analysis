@@ -32,161 +32,65 @@ def load_config(config_path: str) -> dict:
         return yaml.safe_load(f)
 
 
-def test_tool_execution():
-    """Test RGB tool execution."""
-    tool_path = experiment_root / 'src' / 'tools' / 'rgb.py'
-    
-    if not tool_path.exists():
-        return False, f"Tool not found: {tool_path}"
-    
-    try:
-        import subprocess
-        result = subprocess.run(
-            ['python', str(tool_path), '255', '0', '0'],
-            capture_output=True,
-            text=True,
-            timeout=10
-        )
-        
-        if result.returncode == 0:
-            return True, "RGB tool working correctly"
-        else:
-            return False, f"Tool failed: {result.stderr}"
-            
-    except Exception as e:
-        return False, f"Tool test error: {e}"
 
 
-def test_model_loading(config: dict):
-    """Test model loading and basic generation."""
+async def main():
+    parser = argparse.ArgumentParser(description='Test MCP color generation')
+    parser.add_argument('--config', default='config.yaml',
+                       help='Configuration file path')
+    parser.add_argument('--prompt', default='Generate red color',
+                       help='Test prompt')
+
+    args = parser.parse_args()
+
+    # Change to experiment directory
+    os.chdir(experiment_root)
+
+    # Load configuration
+    config = load_config(args.config)
+    setup_logging(config['output'].get('log_level', 'INFO'))
     logger = logging.getLogger(__name__)
-    
-    try:
-        # Load model
-        loader = TransformersLoader(config)
-        model = loader.load_model()
-        
-        model_info = loader.get_model_info()
-        logger.info(f"Model loaded: {model_info['model_name']}")
-        logger.info(f"Layers: {model_info['num_layers']}, Hidden size: {model_info['hidden_size']}")
-        
-        # Test generation
-        test_prompt = "Generate red color"
-        generated_text, hidden_states = loader.generate_with_states(test_prompt)
-        
-        logger.info(f"Test prompt: '{test_prompt}'")
-        logger.info(f"Generated: '{generated_text}'")
-        logger.info(f"Hidden states extracted: {list(hidden_states.keys())}")
-        
-        return True, {
-            'model_info': model_info,
-            'generated_text': generated_text,
-            'hidden_states_count': len(hidden_states)
-        }
-        
-    except Exception as e:
-        return False, str(e)
 
+    logger.info("MCP Color Generation Test")
+    logger.info(f"Model: {config['model']['model_name']}")
+    logger.info(f"Prompt: '{args.prompt}'")
+    logger.info("=" * 60)
 
-def test_mcp_integration(config: dict):
-    """Test MCP controller integration."""
-    logger = logging.getLogger(__name__)
-    
     try:
         # Load model
         loader = TransformersLoader(config)
         loader.load_model()
-        
+
         # Initialize MCP controller
         controller = MCPController(loader, config)
-        
-        # Test simple task
-        import asyncio
-        
-        async def run_test():
-            result = await controller.execute_mcp_task(
-                "Generate red color using the RGB tool.", 
-                "rgb"
-            )
-            return result
-        
-        result = asyncio.run(run_test())
-        
-        logger.info(f"MCP Task completed")
-        logger.info(f"Generated: '{result['generated_text']}'")
+
+        # Execute MCP task
+        result = await controller.execute_mcp_task(args.prompt, 'rgb')
+
+        # Display results
+        logger.info("FULL PROMPT SENT TO LLM:")
+        logger.info(result['full_prompt'])
+        logger.info("=" * 60)
+        logger.info("LLM RAW OUTPUT:")
+        logger.info(f"'{result['generated_text']}'")
+        logger.info("=" * 60)
         logger.info(f"Tool call detected: {result['tool_call_detected']}")
-        logger.info(f"Tool success: {result['success']}")
-        
-        return True, result
-        
+        if result['tool_call_detected']:
+            logger.info(f"Detected RGB: {result['tool_args']}")
+            logger.info(f"Tool success: {result['success']}")
+            if result['success']:
+                logger.info(f"Tool result: {result['tool_result']}")
+
+        # Cleanup
+        loader.cleanup()
+
+        return 0
+
     except Exception as e:
-        return False, str(e)
-
-
-def main():
-    parser = argparse.ArgumentParser(description='Test color generation experiment')
-    parser.add_argument('--config', default='config.yaml',
-                       help='Configuration file path')
-    parser.add_argument('--model', type=str,
-                       help='Override model name')
-    
-    args = parser.parse_args()
-    
-    # Change to experiment directory
-    os.chdir(experiment_root)
-    
-    # Load configuration
-    config = load_config(args.config)
-    
-    # Override model if specified
-    if args.model:
-        config['model']['model_name'] = args.model
-    
-    setup_logging(config['output'].get('log_level', 'INFO'))
-    logger = logging.getLogger(__name__)
-    
-    logger.info("Starting color generation experiment tests")
-    logger.info(f"Experiment root: {experiment_root}")
-    logger.info(f"Model: {config['model']['model_name']}")
-    
-    # Test 1: Tool execution
-    logger.info("=" * 50)
-    logger.info("TEST 1: RGB Tool Execution")
-    success, message = test_tool_execution()
-    logger.info(f"Result: {'✓ PASS' if success else '✗ FAIL'} - {message}")
-    
-    if not success:
-        logger.error("Tool test failed, stopping tests")
+        logger.error(f"Test failed: {e}")
         return 1
-    
-    # Test 2: Model loading
-    logger.info("=" * 50)
-    logger.info("TEST 2: Model Loading and Generation")
-    success, result = test_model_loading(config)
-    logger.info(f"Result: {'✓ PASS' if success else '✗ FAIL'}")
-    
-    if not success:
-        logger.error(f"Model test failed: {result}")
-        return 1
-    
-    # Test 3: MCP integration
-    logger.info("=" * 50)
-    logger.info("TEST 3: MCP Integration")
-    success, result = test_mcp_integration(config)
-    logger.info(f"Result: {'✓ PASS' if success else '✗ FAIL'}")
-    
-    if not success:
-        logger.error(f"MCP test failed: {result}")
-        return 1
-    
-    # Summary
-    logger.info("=" * 50)
-    logger.info("ALL TESTS PASSED ✓")
-    logger.info("Experiment is ready to run!")
-    logger.info("Next: python scripts/run_experiment.py")
-    
-    return 0
 
 
 if __name__ == '__main__':
-    sys.exit(main())
+    import asyncio
+    sys.exit(asyncio.run(main()))

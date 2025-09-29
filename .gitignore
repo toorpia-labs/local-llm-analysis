@@ -36,7 +36,6 @@ ENV/
 Thumbs.db
 
 # Experiment data and results
-experiments/*/results/
 experiments/*/outputs/
 experiments/*/logs/
 *.pkl
