@@ -84,3 +84,4 @@ ai_generated_*
 claude_draft_*
 ai_draft_*
 CLAUDE_TEMP.md
+.claude/settings.local.json

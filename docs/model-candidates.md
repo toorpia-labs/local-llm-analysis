@@ -4,45 +4,46 @@ This document lists candidate models for the color generation MCP experiment, or
 
 ## Table of Contents
 
-- [1. Selection Criteria](#1-selection-criteria)
-- [2. Latest High-Priority Models (2024-2025)](#2-latest-high-priority-models-2024-2025)
-  - [2.1 Llama 3.3 Family (Dec 2024)](#21-llama-33-family-dec-2024)
-  - [2.2 Qwen2.5 Family (Sep 2024, Jan 2025 tech report)](#22-qwen25-family-sep-2024-jan-2025-tech-report)
-  - [2.3 Phi-4 Family (Jan-Feb 2025)](#23-phi-4-family-jan-feb-2025)
-- [3. Llama 3.2 Family (Sep 2024)](#3-llama-32-family-sep-2024)
-- [4. Alternative Models](#4-alternative-models)
-  - [4.1 Mistral Family](#41-mistral-family)
-- [5. Japanese Language Models](#5-japanese-language-models)
-  - [5.1 Recommended (2025)](#51-recommended-2025)
-  - [5.2 Japanese-Specific Models](#52-japanese-specific-models)
-- [6. Future Multimodal Experiments](#6-future-multimodal-experiments)
-  - [6.1 Vision-Language Models](#61-vision-language-models)
-- [7. Lightweight Models](#7-lightweight-models)
-  - [7.1 Qwen2.5 Small Models](#71-qwen25-small-models)
-- [8. Additional Research Options](#8-additional-research-options)
-  - [8.1 Alternative Families](#81-alternative-families)
-- [9. 🎯 Recommendations by Hardware (Updated 2025)](#9--recommendations-by-hardware-updated-2025)
-  - [9.1 Budget Setup (8GB GPU)](#91-budget-setup-8gb-gpu)
-  - [9.2 Mid-Range Setup (16GB GPU)](#92-mid-range-setup-16gb-gpu)
-  - [9.3 High-End Setup (24GB+ GPU)](#93-high-end-setup-24gb-gpu)
-- [10. 🏆 Top 3 Models for Color Generation Experiment](#10--top-3-models-for-color-generation-experiment)
-  - [10.1 1st Place: **Phi-4-mini (3.8B)** 🥇](#101-1st-place-phi-4-mini-38b-)
-  - [10.2 2nd Place: **Qwen2.5-7B-Instruct** 🥈](#102-2nd-place-qwen25-7b-instruct-)
-  - [10.3 3rd Place: **Llama-3.3-70B-Instruct** 🥉](#103-3rd-place-llama-33-70b-instruct-)
-- [11. 📋 Research Tasks for Students](#11--research-tasks-for-students)
-  - [11.1 Priority 1: Function Calling Evaluation](#111-priority-1-function-calling-evaluation)
-  - [11.2 Priority 2: Performance Assessment](#112-priority-2-performance-assessment)
-  - [11.3 Priority 3: Comparative Analysis](#113-priority-3-comparative-analysis)
-  - [11.4 Methodology](#114-methodology)
-- [12. 🚀 Next Steps](#12--next-steps)
-  - [12.1 Immediate Actions](#121-immediate-actions)
-  - [12.2 Team Assignments](#122-team-assignments)
-  - [12.3 Success Metrics](#123-success-metrics)
-- [13. 📝 Important Notes](#13--important-notes)
-  - [13.1 Technical Considerations](#131-technical-considerations)
-  - [13.2 Access Requirements](#132-access-requirements)
-  - [13.3 Updated Focus (2025)](#133-updated-focus-2025)
-  - [13.4 Performance Expectation](#134-performance-expectation)
+- [Local LLM Model Candidates](#local-llm-model-candidates)
+  - [Table of Contents](#table-of-contents)
+  - [1. Selection Criteria](#1-selection-criteria)
+  - [2. Latest High-Priority Models (2024-2025)](#2-latest-high-priority-models-2024-2025)
+    - [2.1 Llama 3.3 Family (Dec 2024)](#21-llama-33-family-dec-2024)
+    - [2.2 Qwen2.5 Family (Sep 2024, Jan 2025 tech report) ⭐ **HIGHLY RECOMMENDED**](#22-qwen25-family-sep-2024-jan-2025-tech-report--highly-recommended)
+    - [2.3 Phi-4 Family (Jan-Feb 2025) ⭐ **COMPACT CHOICE**](#23-phi-4-family-jan-feb-2025--compact-choice)
+  - [3. Llama 3.2 Family (Sep 2024)](#3-llama-32-family-sep-2024)
+  - [4. Alternative Models](#4-alternative-models)
+    - [4.1 Mistral Family](#41-mistral-family)
+  - [5. Japanese Language Models](#5-japanese-language-models)
+    - [5.1 Recommended (2025)](#51-recommended-2025)
+    - [5.2 Japanese-Specific Models](#52-japanese-specific-models)
+  - [6. Future Multimodal Experiments](#6-future-multimodal-experiments)
+    - [6.1 Vision-Language Models](#61-vision-language-models)
+  - [7. Lightweight Models](#7-lightweight-models)
+    - [7.1 Qwen2.5 Small Models](#71-qwen25-small-models)
+  - [8. Additional Research Options](#8-additional-research-options)
+    - [8.1 Alternative Families](#81-alternative-families)
+  - [9. 🎯 Recommendations by Hardware (Updated 2025)](#9--recommendations-by-hardware-updated-2025)
+    - [9.1 Budget Setup (8GB GPU) ⭐ **BEST VALUE**](#91-budget-setup-8gb-gpu--best-value)
+    - [9.2 Mid-Range Setup (16GB GPU) ⭐ **RECOMMENDED**](#92-mid-range-setup-16gb-gpu--recommended)
+    - [9.3 High-End Setup (24GB+ GPU) ⭐ **MAXIMUM PERFORMANCE**](#93-high-end-setup-24gb-gpu--maximum-performance)
+  - [10. 🏆 Top 3 Models for Color Generation Experiment](#10--top-3-models-for-color-generation-experiment)
+    - [10.1 1st Place: **Phi-4-mini (3.8B)** 🥇](#101-1st-place-phi-4-mini-38b-)
+    - [10.2 2nd Place: **Qwen2.5-7B-Instruct** 🥈](#102-2nd-place-qwen25-7b-instruct-)
+    - [10.3 3rd Place: **Llama-3.3-70B-Instruct** 🥉](#103-3rd-place-llama-33-70b-instruct-)
+  - [11. 📋 Research Tasks for Students](#11--research-tasks-for-students)
+    - [11.1 Priority 1: Function Calling Evaluation](#111-priority-1-function-calling-evaluation)
+    - [11.2 Priority 2: Performance Assessment](#112-priority-2-performance-assessment)
+    - [11.3 Priority 3: Comparative Analysis](#113-priority-3-comparative-analysis)
+    - [11.4 Methodology](#114-methodology)
+  - [12. 🚀 Next Steps](#12--next-steps)
+    - [12.1 Immediate Actions](#121-immediate-actions)
+    - [12.2 Success Metrics](#122-success-metrics)
+  - [13. 📝 Important Notes](#13--important-notes)
+    - [13.1 Technical Considerations](#131-technical-considerations)
+    - [13.2 Access Requirements](#132-access-requirements)
+    - [13.3 Updated Focus (2025)](#133-updated-focus-2025)
+    - [13.4 Performance Expectation](#134-performance-expectation)
 
 ## 1. Selection Criteria
 
@@ -238,30 +239,51 @@ For resource-constrained environments:
 - Analyze hidden state extraction overhead
 
 ### 11.4 Methodology
-1. **Start with Phi-4-mini** - Most promising budget option
-2. **Scale up to Qwen2.5-7B** - Mid-range reference
-3. **Test Llama-3.3-70B** - Maximum capability benchmark (if feasible)
-4. **Document all findings** - Create model comparison matrix
+**Sequential Single-Student Evaluation Approach:**
+1. **Establish baseline with Phi-4-mini** - Master the color generation experiment protocol
+2. **Expand to Qwen2.5-7B** - Apply learned methodology to mid-range model
+3. **Scale to Llama-3.3-70B** - Maximum capability benchmark (if hardware permits)
+4. **Create integrated comparison report** - Single consistent evaluation across all models
+5. **Document experimental learnings** - Refine methodology for future experiments
+
+**Benefits of this approach:**
+- **Consistent evaluation criteria** across all models
+- **Learning curve advantage** - improved prompt engineering skills applied to each subsequent model
+- **No aggregation complexity** - single comprehensive report
+- **Efficient resource utilization** - focus on most promising candidates first
 
 ## 12. 🚀 Next Steps
 
 ### 12.1 Immediate Actions
-1. **Start with Phi-4-mini** - Download and test basic function calling
-2. **Setup evaluation environment** - Standardized prompts and success metrics
-3. **Document hardware specs** - Available VRAM and processing capabilities
-4. **Create baseline tests** - Simple color generation tasks
+**Phase 1: Establish Foundation with Most Promising Model**
+1. **Master Phi-4-mini** - Focus entirely on the #1 ranked model first
+   - Perfect the color generation experiment setup
+   - Establish robust evaluation protocols
+   - Document comprehensive results and methodology
+2. **Create standardized workflow** - Reusable procedures for subsequent models
+3. **Hardware optimization** - Fine-tune configuration for available resources
+4. **Validate experimental design** - Ensure methodology captures meaningful differences
 
-### 12.2 Team Assignments
-- **Student 1**: Phi-4 series evaluation (mini + standard)
-- **Student 2**: Qwen2.5 series comparison (3B, 7B, 14B)
-- **Student 3**: Llama-3.2/3.3 assessment (based on available hardware)
-- **Student 4**: Performance optimization (quantization, memory usage)
+**Phase 2: Sequential Model Expansion (Only After Phase 1 Success)**
+1. **Apply proven methodology to Qwen2.5-7B** - Leverage established workflow
+2. **Scale to Llama-3.3-70B** - Maximum capability assessment (if hardware permits)
+3. **Generate integrated comparison report** - Single comprehensive analysis
 
-### 12.3 Success Metrics
-- Tool calling accuracy rate (% successful RGB generations)
-- Response time and resource usage
-- Hidden state extraction feasibility
-- Robustness to prompt variations
+### 12.2 Success Metrics
+**For Single-Student Integrated Comparison Report:**
+- **Tool calling accuracy** - % successful RGB generations across all tested models
+- **Consistency analysis** - Variation in performance across multiple prompt templates
+- **Resource efficiency** - VRAM usage and generation speed comparison
+- **Hidden state viability** - Feasibility of state extraction for each model
+- **Robustness assessment** - Performance on edge cases and malformed inputs
+- **Learning curve documentation** - How experimental skills improved across models
+- **Methodology refinement** - Improvements discovered during sequential testing
+
+**Report Quality Indicators:**
+- **Single evaluation standard** applied consistently across all models
+- **Comprehensive model ranking** with clear justification
+- **Actionable recommendations** for future experiments
+- **Reusable methodology** documented for other researchers
 
 ## 13. 📝 Important Notes
 
