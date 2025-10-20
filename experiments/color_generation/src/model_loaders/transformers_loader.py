@@ -201,6 +201,105 @@ class TransformersLoader:
             self.logger.error(f"Error during generation: {e}")
             raise
 
+    def extract_hidden_states(self, input_ids, attention_mask=None) -> Dict[str, Any]:
+        """
+        Extract hidden states for given input IDs (Issue #1 API requirement).
+
+        Args:
+            input_ids: Input token IDs (torch.Tensor or list)
+            attention_mask: Optional attention mask
+
+        Returns:
+            Dict containing extracted hidden states
+        """
+        if self.model is None:
+            raise RuntimeError("Model not loaded. Call load_model() first.")
+
+        try:
+            # Convert to tensor if needed
+            if not isinstance(input_ids, torch.Tensor):
+                input_ids = torch.tensor(input_ids)
+
+            # Ensure proper shape (add batch dimension if needed)
+            if input_ids.dim() == 1:
+                input_ids = input_ids.unsqueeze(0)
+
+            # Move to model device
+            if hasattr(self.model, 'device'):
+                device = self.model.device
+            else:
+                device = next(self.model.parameters()).device
+
+            input_ids = input_ids.to(device)
+
+            # Create attention mask if not provided
+            if attention_mask is None:
+                attention_mask = torch.ones_like(input_ids)
+            elif not isinstance(attention_mask, torch.Tensor):
+                attention_mask = torch.tensor(attention_mask)
+
+            attention_mask = attention_mask.to(device)
+
+            # Forward pass to get hidden states
+            with torch.no_grad():
+                outputs = self.model(
+                    input_ids=input_ids,
+                    attention_mask=attention_mask,
+                    output_hidden_states=True
+                )
+
+            # Extract hidden states from all layers
+            hidden_states = outputs.hidden_states
+
+            # Process and structure the hidden states
+            return self._process_hidden_states(hidden_states, input_ids)
+
+        except Exception as e:
+            self.logger.error(f"Error extracting hidden states: {e}")
+            raise
+
+    def _process_hidden_states(self, hidden_states_tuple, input_ids) -> Dict[str, Any]:
+        """
+        Process hidden states into structured format.
+
+        Args:
+            hidden_states_tuple: Tuple of hidden states from model
+            input_ids: Input token IDs
+
+        Returns:
+            Dict containing processed hidden states
+        """
+        try:
+            target_layers = self.analysis_config.get('target_layers', [-1])
+            save_raw = self.analysis_config.get('save_raw_states', False)
+
+            processed = {}
+
+            if hidden_states_tuple:
+                for layer_idx in target_layers:
+                    if abs(layer_idx) <= len(hidden_states_tuple):
+                        layer_states = hidden_states_tuple[layer_idx]
+                        layer_states_cpu = layer_states.cpu().numpy()
+
+                        layer_data = {
+                            'shape': layer_states_cpu.shape,
+                            'mean': float(layer_states_cpu.mean()),
+                            'std': float(layer_states_cpu.std()),
+                            'min': float(layer_states_cpu.min()),
+                            'max': float(layer_states_cpu.max())
+                        }
+
+                        if save_raw:
+                            layer_data['vector'] = layer_states_cpu
+
+                        processed[f'layer_{layer_idx}'] = layer_data
+
+            return processed
+
+        except Exception as e:
+            self.logger.warning(f"Error processing hidden states: {e}")
+            return {}
+
     def _extract_hidden_states(self, hidden_states_tuple, generated_tokens) -> Dict[str, Any]:
         """
         Extract and process hidden states from generation output.
@@ -213,29 +312,54 @@ class TransformersLoader:
             Dict containing processed hidden states
         """
         try:
-            # Basic extraction - can be enhanced later
+            # Configuration
             target_layers = self.analysis_config.get('target_layers', [-1])
+            save_raw = self.analysis_config.get('save_raw_states', False)
+            extract_for = self.analysis_config.get('extract_for_tokens', 'output_only')
 
             extracted_states = {}
 
             if hidden_states_tuple:
+                # Determine which steps to extract based on extract_for_tokens
+                if extract_for == 'output_only':
+                    # Only extract for newly generated tokens
+                    steps_to_extract = range(len(hidden_states_tuple))
+                elif extract_for == 'all':
+                    # Extract for all tokens (including input)
+                    steps_to_extract = range(len(hidden_states_tuple))
+                else:
+                    steps_to_extract = range(len(hidden_states_tuple))
+
                 # Get states from target layers
-                for step_idx, step_states in enumerate(hidden_states_tuple):
-                    if step_states is not None:
-                        step_extracted = {}
-                        for layer_idx in target_layers:
-                            if abs(layer_idx) <= len(step_states):
-                                layer_states = step_states[layer_idx]
-                                # Convert to CPU and get basic statistics
-                                layer_states_cpu = layer_states.cpu().numpy()
-                                step_extracted[f'layer_{layer_idx}'] = {
-                                    'shape': layer_states_cpu.shape,
-                                    'mean': float(layer_states_cpu.mean()),
-                                    'std': float(layer_states_cpu.std()),
-                                    'min': float(layer_states_cpu.min()),
-                                    'max': float(layer_states_cpu.max())
-                                }
-                        extracted_states[f'step_{step_idx}'] = step_extracted
+                for step_idx in steps_to_extract:
+                    if step_idx < len(hidden_states_tuple):
+                        step_states = hidden_states_tuple[step_idx]
+                        if step_states is not None:
+                            step_extracted = {}
+
+                            for layer_idx in target_layers:
+                                if abs(layer_idx) <= len(step_states):
+                                    layer_states = step_states[layer_idx]
+                                    # Convert to CPU
+                                    layer_states_cpu = layer_states.cpu().numpy()
+
+                                    layer_data = {
+                                        'shape': layer_states_cpu.shape,
+                                        'mean': float(layer_states_cpu.mean()),
+                                        'std': float(layer_states_cpu.std()),
+                                        'min': float(layer_states_cpu.min()),
+                                        'max': float(layer_states_cpu.max())
+                                    }
+
+                                    # Save raw vector data if requested
+                                    if save_raw:
+                                        # Store the full hidden state vector
+                                        # Shape: (batch_size, seq_len, hidden_dim)
+                                        layer_data['vector'] = layer_states_cpu
+
+                                    step_extracted[f'layer_{layer_idx}'] = layer_data
+
+                            extracted_states[f'step_{step_idx}'] = step_extracted
 
             return extracted_states
 
