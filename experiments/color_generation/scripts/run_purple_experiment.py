@@ -18,6 +18,7 @@ sys.path.insert(0, str(experiment_root / 'src'))
 
 from model_loaders.transformers_loader import TransformersLoader
 from mcp_controllers.base import MCPController
+from utils.csv_exporter import CSVExporter
 
 
 def setup_logging(level: str = "INFO"):
@@ -48,9 +49,10 @@ async def run_purple_trials():
     results_dir = Path('results')
     results_dir.mkdir(exist_ok=True)
 
-    # Results file
+    # Results file and CSV directory
     timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
     results_file = results_dir / f'results_purple_experiment_{timestamp}.dat'
+    csv_dir = results_dir / f'hidden_states_purple_{timestamp}'
 
     logger.info("=" * 60)
     logger.info("PURPLE COLOR MCP EXPERIMENT")
@@ -65,23 +67,47 @@ async def run_purple_trials():
         loader = TransformersLoader(config)
         loader.load_model()
 
+        # Get model info for CSV exporter
+        model_info = loader.get_model_info()
+        hidden_size = model_info['hidden_size']
+
         # Initialize MCP controller
         controller = MCPController(loader, config)
         logger.info("Model loaded and MCP controller initialized")
+
+        # Initialize CSV exporter
+        csv_export_layers = config.get('analysis', {}).get('csv_export_layers', [-1])
+        csv_n_tokens = config.get('analysis', {}).get('csv_average_first_n_tokens', 1)
+        csv_exporter = CSVExporter(
+            output_dir=csv_dir,
+            hidden_size=hidden_size,
+            export_layers=csv_export_layers,
+            n_tokens_to_average=csv_n_tokens
+        )
+        logger.info(f"CSV exporter initialized: layers={csv_export_layers}, n_tokens={csv_n_tokens}")
 
         # Results storage
         results = []
         prompt = "Generate purple color"
 
-        # Run 100 trials
-        logger.info("Starting 100 trials...")
-        for trial in range(1, 101):
-            logger.info(f"Trial {trial}/100")
+        # Run 5 trials (for testing)
+        num_trials = 5
+        logger.info(f"Starting {num_trials} trials...")
+        for trial in range(1, num_trials + 1):
+            logger.info(f"Trial {trial}/{num_trials}")
 
             # Execute MCP task
             result = await controller.execute_mcp_task(prompt, 'rgb')
 
-            # Store trial result
+            # Export hidden states to CSV
+            csv_written = csv_exporter.write_trial(
+                trial_no=trial,
+                success=result['success'],
+                generated_text=result['generated_text'],
+                hidden_states=result.get('hidden_states', {})
+            )
+
+            # Store trial result (without hidden_states to save memory)
             trial_data = {
                 'trial': trial,
                 'timestamp': datetime.now().isoformat(),
@@ -91,7 +117,8 @@ async def run_purple_trials():
                 'tool_args': result['tool_args'],
                 'success': result['success'],
                 'tool_result': result['tool_result'],
-                'error': result['error']
+                'error': result['error'],
+                'csv_exported': csv_written
             }
 
             results.append(trial_data)
@@ -149,6 +176,9 @@ async def run_purple_trials():
         with open(results_file, 'w') as f:
             json.dump(summary, f, indent=2, ensure_ascii=False)
 
+        # Close CSV exporter
+        csv_exporter.close()
+
         # Display summary
         logger.info("=" * 60)
         logger.info("PURPLE COLOR EXPERIMENT COMPLETED")
@@ -160,6 +190,7 @@ async def run_purple_trials():
         logger.info(f"Unique responses: {len(unique_responses)}")
         logger.info(f"Response variability: {'Yes' if len(unique_responses) > 1 else 'No'}")
         logger.info(f"Results saved to: {results_file}")
+        logger.info(f"Hidden states CSV saved to: {csv_dir}")
 
         # Show unique responses
         if len(unique_responses) <= 10:
