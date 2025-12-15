@@ -1,7 +1,7 @@
 # Core ML dependencies
 torch>=1.9.0
 transformers>=4.21.0
-numpy>=1.21.0
+numpy>=1.21.0,<2.0  # NumPy 2.x has compatibility issues with TensorFlow
 accelerate>=0.20.0
 
 # Analysis and visualization
