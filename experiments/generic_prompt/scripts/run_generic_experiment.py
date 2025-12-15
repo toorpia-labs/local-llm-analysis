@@ -41,7 +41,7 @@ def load_config(config_path: str) -> dict:
         return yaml.safe_load(f)
 
 
-def run_experiment(prompt: str, n_trials: int, output_dir: str = None, config_path: str = 'config.yaml'):
+def run_experiment(prompt: str, n_trials: int, output_dir: str = None, config_path: str = 'config.yaml', model_name: str = None):
     """
     Run generic experiment with repeated prompt execution.
 
@@ -50,12 +50,18 @@ def run_experiment(prompt: str, n_trials: int, output_dir: str = None, config_pa
         n_trials: Number of trials to run
         output_dir: Optional output directory (default: results/generic_TIMESTAMP)
         config_path: Path to config file (default: config.yaml)
+        model_name: Optional model name to override config (default: use config.yaml)
     """
     # Change to experiment directory
     os.chdir(experiment_root)
 
     # Load configuration
     config = load_config(config_path)
+
+    # Override model name if specified
+    if model_name:
+        config['model']['model_name'] = model_name
+
     setup_logging(config['output'].get('log_level', 'INFO'))
     logger = logging.getLogger(__name__)
 
@@ -280,6 +286,13 @@ Examples:
         help='Path to config file (default: config.yaml)'
     )
 
+    parser.add_argument(
+        '--model',
+        type=str,
+        default=None,
+        help='Model name to use (overrides config.yaml). Example: microsoft/Phi-4-mini-instruct'
+    )
+
     args = parser.parse_args()
 
     # Validate arguments
@@ -291,7 +304,8 @@ Examples:
         prompt=args.prompt,
         n_trials=args.trials,
         output_dir=args.output,
-        config_path=args.config
+        config_path=args.config,
+        model_name=args.model
     )
 
     return 0 if success else 1
