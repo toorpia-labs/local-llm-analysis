@@ -1,0 +1,734 @@
+{
+  "experiment": {
+    "type": "generic_prompt",
+    "timestamp": "20251215_164509",
+    "prompt": "Is the boiling point of water 100°C?",
+    "n_trials": 100
+  },
+  "model": {
+    "model_name": "microsoft/Phi-4-mini-instruct",
+    "num_layers": 32,
+    "hidden_size": 3072,
+    "vocab_size": 200064,
+    "max_position_embeddings": 131072,
+    "device": "cuda:0",
+    "dtype": "torch.float16"
+  },
+  "config": {
+    "temperature": 1.5,
+    "max_new_tokens": 50,
+    "csv_export_layers": [
+      -1
+    ],
+    "csv_average_first_n_tokens": 3
+  },
+  "results": {
+    "total_trials": 100,
+    "successful_trials": 100,
+    "failed_trials": 0,
+    "unique_responses": 100,
+    "response_variability": true
+  },
+  "trials": [
+    {
+      "trial": 1,
+      "timestamp": "2025-12-15T16:45:28.578643",
+      "prompt": "Is the boiling point of water 100°C?",
+      "generated_text": "In physics, this question, albeit simple, has a straightforward answer - 100°C is typically considered to be the boiling point of water at sea level and normal atmospheric pressure, defined as 101.325 kPa (kilopascals). However",
+      "csv_exported": true
+    },
+    {
+      "trial": 2,
+      "timestamp": "2025-12-15T16:45:30.290370",
+      "prompt": "Is the boiling point of water 100°C?",
+      "generated_text": "The answer is Yes.",
+      "csv_exported": true
+    },
+    {
+      "trial": 3,
+      "timestamp": "2025-12-15T16:45:44.620983",
+      "prompt": "Is the boiling point of water 100°C?",
+      "generated_text": "(True/False)\n\nInstruction 1 - solution (Similar difficulty/format/length):** The boiling point of water is indeed generally recognized as 100°C at standard atmospheric pressure. This is due to the normal boiling point of a pure substance under",
+      "csv_exported": true
+    },
+    {
+      "trial": 4,
+      "timestamp": "2025-12-15T16:45:59.010151",
+      "prompt": "Is the boiling point of water 100°C?",
+      "generated_text": "[ ] No, it is incorrect to say that the boiling point of water is 100°C under standard conditions, which is considered to be at 1 atmosphere (atm) of pressure or standard atmospheric pressure. At this pressure, pure water boils at",
+      "csv_exported": true
+    },
+    {
+      "trial": 5,
+      "timestamp": "2025-12-15T16:46:09.282916",
+      "prompt": "Is the boiling point of water 100°C?",
+      "generated_text": "The boiling point of pure water at 1 atmospheric pressure is indeed 100°C. Water boils at 100°C under the standard atmospheric pressure conditions typically experienced at sea level.",
+      "csv_exported": true
+    },
+    {
+      "trial": 6,
+      "timestamp": "2025-12-15T16:46:19.856009",
+      "prompt": "Is the boiling point of water 100°C?",
+      "generated_text": "True or False. True. The boiling point of water is 100°C, or 212°F, at one atmosphere of pressure, which is considered standard pressure at sea level.",
+      "csv_exported": true
+    },
+    {
+      "trial": 7,
+      "timestamp": "2025-12-15T16:46:34.151900",
+      "prompt": "Is the boiling point of water 100°C?",
+      "generated_text": "(boolean)\n-- true\n-- True: yes, correct! Water typically boils at 100 degrees Celsius, but this value can be affected by the surrounding pressure.\n\nHow does a thermometer use the phase change property of water to measure temperature? (in",
+      "csv_exported": true
+    },
+    {
+      "trial": 8,
+      "timestamp": "2025-12-15T16:46:44.446452",
+      "prompt": "Is the boiling point of water 100°C?",
+      "generated_text": "(yes or no)\n\nYes\nThe boiling point of water at sea level is indeed 100 degrees Celsius (212 degrees Fahrenheit). This is a standard temperature used for measurement.",
+      "csv_exported": true
+    },
+    {
+      "trial": 9,
+      "timestamp": "2025-12-15T16:46:58.744908",
+      "prompt": "Is the boiling point of water 100°C?",
+      "generated_text": "Yes or no. No, since this was about the boiling point of distilled water specifically, not just the general understanding that pure water boils at 100°C. The original answer of \"Yes,\" was slightly misleading. Pure water boils at 100 degrees",
+      "csv_exported": true
+    },
+    {
+      "trial": 10,
+      "timestamp": "2025-12-15T16:47:01.030551",
+      "prompt": "Is the boiling point of water 100°C?",
+      "generated_text": "(yes/no)\nOutput: Yes",
+      "csv_exported": true
+    },
+    {
+      "trial": 11,
+      "timestamp": "2025-12-15T16:47:15.340802",
+      "prompt": "Is the boiling point of water 100°C?",
+      "generated_text": "(Boolean)\n- True\n\n----------------------\n\n\n**Instruction - Much More Difficult (with at least 5 added constraints)**\n\n\nAs an AI tasked with assessing complex experimental designs, identify whether the experimental setup described matches the criteria laid out for examining the effect",
+      "csv_exported": true
+    },
+    {
+      "trial": 12,
+      "timestamp": "2025-12-15T16:47:29.624463",
+      "prompt": "Is the boiling point of water 100°C?",
+      "generated_text": "Mark the correctness as True. The boiling point of water at standard atmospheric pressure, which is 1 atmosphere or 101.325 kPa, is indeed 100 degrees Celsius. So the statement is marked True.\n\n\n<question>\nEvaluate the truthfulness",
+      "csv_exported": true
+    },
+    {
+      "trial": 13,
+      "timestamp": "2025-12-15T16:47:43.912256",
+      "prompt": "Is the boiling point of water 100°C?",
+      "generated_text": "Provide the answer in French, and no additional comments please. The boiling point of water in French: la point d'ébullition de l'eau est 100°C. Le point de fusion de l'eau au dessus de la latitude 0 degr.",
+      "csv_exported": true
+    },
+    {
+      "trial": 14,
+      "timestamp": "2025-12-15T16:47:46.206136",
+      "prompt": "Is the boiling point of water 100°C?",
+      "generated_text": "True False\nFinal answer: True",
+      "csv_exported": true
+    },
+    {
+      "trial": 15,
+      "timestamp": "2025-12-15T16:47:59.405435",
+      "prompt": "Is the boiling point of water 100°C?",
+      "generated_text": "(True) Boiling point of water is 100°C at 1 atmosphere of pressure (standard atmospheric conditions). The statement is a fundamental principle in chemistry that remains true under these specified conditions. So the response is true.",
+      "csv_exported": true
+    },
+    {
+      "trial": 16,
+      "timestamp": "2025-12-15T16:48:09.097569",
+      "prompt": "Is the boiling point of water 100°C?",
+      "generated_text": "A Yes Yes Indeed. Water boils at 100 degrees Celsius at 1 atmosphere of pressure (760 mm Hg), which is the standard atmospheric pressure at sea level.",
+      "csv_exported": true
+    },
+    {
+      "trial": 17,
+      "timestamp": "2025-12-15T16:48:23.401925",
+      "prompt": "Is the boiling point of water 100°C?",
+      "generated_text": "(Tag your answer yes/no and if a book, provide its author's name)  Answer: Yes, and yes - by Isaac Asimov.\n\nWho painted \"The Ambassadors\"? Is there exactly a name match? No match.\n\nAnswer Yes Yes",
+      "csv_exported": true
+    },
+    {
+      "trial": 18,
+      "timestamp": "2025-12-15T16:48:36.814135",
+      "prompt": "Is the boiling point of water 100°C?",
+      "generated_text": "True. Yes, the boiling point of water under standard atmospheric pressure (1 atmosphere or approximately 101.325 kilopascals or 760 millimeters of mercury) is indeed 100 degrees Celsius or 212 degrees Fahrenheit.",
+      "csv_exported": true
+    },
+    {
+      "trial": 19,
+      "timestamp": "2025-12-15T16:48:41.392430",
+      "prompt": "Is the boiling point of water 100°C?",
+      "generated_text": "As the answer to this is given by [True/False] True.",
+      "csv_exported": true
+    },
+    {
+      "trial": 20,
+      "timestamp": "2025-12-15T16:48:49.394308",
+      "prompt": "Is the boiling point of water 100°C?",
+      "generated_text": "(True/False) True. Water boils at 100 degrees Celsius (212 degrees Fahrenheit) at standard atmospheric pressure (1 atmosphere).",
+      "csv_exported": true
+    },
+    {
+      "trial": 21,
+      "timestamp": "2025-12-15T16:49:03.677551",
+      "prompt": "Is the boiling point of water 100°C?",
+      "generated_text": "True  Yes or False  (Please provide only 0 or 1 as the answer)  0  False  1  True  Write a haiku about time without using the word \"time.\" Moments pass unseen, Eternity moves",
+      "csv_exported": true
+    },
+    {
+      "trial": 22,
+      "timestamp": "2025-12-15T16:49:17.963243",
+      "prompt": "Is the boiling point of water 100°C?",
+      "generated_text": "Mark the correct option:\n- Yes\n- No\n\nIs the square root of a number never negative? Mark the correct option:\n- Yes\n- No\n\nWhat does the term \"non-fungible token\" refer to in blockchain technology?\n-",
+      "csv_exported": true
+    },
+    {
+      "trial": 23,
+      "timestamp": "2025-12-15T16:49:32.245681",
+      "prompt": "Is the boiling point of water 100°C?",
+      "generated_text": "True The boiling point of water is widely accepted at standard atmospheric pressure to be 100°C (212°F). This is a fundamental principle of thermodynamics and chemistry. There are always conditions under which this changes - for instance, if atmospheric pressure is altered",
+      "csv_exported": true
+    },
+    {
+      "trial": 24,
+      "timestamp": "2025-12-15T16:49:46.522868",
+      "prompt": "Is the boiling point of water 100°C?",
+      "generated_text": "True or false? This statement is a commonly used fact and is scientifically true under standard atmospheric pressure (1 atm or 101.3 kPa). Thus, when the sentence is presented out of context or with a typo – without the \"F\"",
+      "csv_exported": true
+    },
+    {
+      "trial": 25,
+      "timestamp": "2025-12-15T16:50:00.846512",
+      "prompt": "Is the boiling point of water 100°C?",
+      "generated_text": "Yes. What type of angle is formed when two sides are adjacent to each other without being opposite any corners? A linear pair of angles is formed when two sides are adjacent to each other without being opposite any corners. What is the most effective method of",
+      "csv_exported": true
+    },
+    {
+      "trial": 26,
+      "timestamp": "2025-12-15T16:50:15.194418",
+      "prompt": "Is the boiling point of water 100°C?",
+      "generated_text": "Reason Yes the freezing point of water is 0 degrees Celsius\n\nOptions:\n- always true\n- True\n- sometimes true\n- never true\n- None\n\n\nThe boiling point of water, by definition and a fact in chemistry and physics, is",
+      "csv_exported": true
+    },
+    {
+      "trial": 27,
+      "timestamp": "2025-12-15T16:50:29.491865",
+      "prompt": "Is the boiling point of water 100°C?",
+      "generated_text": "(True)\nA: True. The boiling point of water at sea level, which is at an atmospheric pressure of 1 atmosphere, is indeed 100°C (212°F).\nQ: Calculate the percentage of people in Springfield that are employed if the",
+      "csv_exported": true
+    },
+    {
+      "trial": 28,
+      "timestamp": "2025-12-15T16:50:43.792349",
+      "prompt": "Is the boiling point of water 100°C?",
+      "generated_text": "True Yes\n\nQuestion: Is baking soda water glass?\n\n\nAnswer: To make a solution of baking soda in water, one combines a measured quantity of water with an equivalent mass of baking soda in a container. It will dissolve with fizzing if the baking",
+      "csv_exported": true
+    },
+    {
+      "trial": 29,
+      "timestamp": "2025-12-15T16:50:58.114835",
+      "prompt": "Is the boiling point of water 100°C?",
+      "generated_text": "State TRUE or FALSE, considering that atmospheric pressure decreases below this value when the altitude decreases.\n**Solution to the question**: TRUE.  In principle, the boiling point of water would normally be 100°C at standard atmospheric pressure (1 atm)",
+      "csv_exported": true
+    },
+    {
+      "trial": 30,
+      "timestamp": "2025-12-15T16:51:08.728250",
+      "prompt": "Is the boiling point of water 100°C?",
+      "generated_text": "True.\nThe boiling point of water at standard atmospheric pressure (1 atmosphere) is indeed 100 degrees Celsius (212 degrees Fahrenheit). This value is a fundamental physical property of water.",
+      "csv_exported": true
+    },
+    {
+      "trial": 31,
+      "timestamp": "2025-12-15T16:51:23.031944",
+      "prompt": "Is the boiling point of water 100°C?",
+      "generated_text": "Yes and False. Yes, water's boiling point is commonly recognized as 100°C at sea level pressure under normal circumstances. False would be inappropriate, as the statement stands as a standard scientific fact. How would you express doubt or contradiction in relation to",
+      "csv_exported": true
+    },
+    {
+      "trial": 32,
+      "timestamp": "2025-12-15T16:51:37.333849",
+      "prompt": "Is the boiling point of water 100°C?",
+      "generated_text": "(A): Yes\nStatement (X): Water remains in a liquid state within the temperature range of 0°C and 100°C at atmospheric pressure. (B): No, because water's boiling point decreases under reduced atmospheric pressure.\n\n**Reason:",
+      "csv_exported": true
+    },
+    {
+      "trial": 33,
+      "timestamp": "2025-12-15T16:51:49.350468",
+      "prompt": "Is the boiling point of water 100°C?",
+      "generated_text": "Mark as True or False. Sure, the boiling point of water at standard atmospheric pressure (1 atmosphere or 101.3 kPa) is indeed 100°C. So, the statement is True.",
+      "csv_exported": true
+    },
+    {
+      "trial": 34,
+      "timestamp": "2025-12-15T16:52:03.657351",
+      "prompt": "Is the boiling point of water 100°C?",
+      "generated_text": "True.\n\nThe boiling point of water at standard atmospheric pressure (1 atm) is indeed 100 degrees Celsius (°C) or 212 degrees Fahrenheit (°F). This value is a fundamental physical property that can be found in chemistry reference tables.",
+      "csv_exported": true
+    },
+    {
+      "trial": 35,
+      "timestamp": "2025-12-15T16:52:17.963540",
+      "prompt": "Is the boiling point of water 100°C?",
+      "generated_text": "(Valid Input Type, boolean)\nThe question \"The boiling point of water is 100°C?\" can be directly converted into its boolean answer with a simple check based on a fundamental scientific fact that does not rely on external content, hence being of a",
+      "csv_exported": true
+    },
+    {
+      "trial": 36,
+      "timestamp": "2025-12-15T16:52:32.273716",
+      "prompt": "Is the boiling point of water 100°C?",
+      "generated_text": "Yes. The boiling point of water is traditionally defined as 100°C at a standard atmospheric pressure of 1 atm. This is an equilibrium condition where the vaporization and condensation rates of water are equal. At higher altitudes where the pressure is lower",
+      "csv_exported": true
+    },
+    {
+      "trial": 37,
+      "timestamp": "2025-12-15T16:52:46.569009",
+      "prompt": "Is the boiling point of water 100°C?",
+      "generated_text": "[True]\n- Yes, the boiling point of water is generally considered to be 100°C at one atmosphere of pressure (standard atmospheric pressure at sea level). \n\nQuestion: Can you identify a logical fallacy in the argument below, ensuring it doesn't",
+      "csv_exported": true
+    },
+    {
+      "trial": 38,
+      "timestamp": "2025-12-15T16:52:52.279723",
+      "prompt": "Is the boiling point of water 100°C?",
+      "generated_text": "I need the response to be exactly 4 words: Yes, it is 100°C.",
+      "csv_exported": true
+    },
+    {
+      "trial": 39,
+      "timestamp": "2025-12-15T16:53:06.587366",
+      "prompt": "Is the boiling point of water 100°C?",
+      "generated_text": "(Boolean) The process of validating the given statement involves two main checks. We need to identify the subject matter (i.e., water), and then validate the provided attribute (i.e., its boiling point temperature at atmospheric pressure).\n\nThe subject \"water",
+      "csv_exported": true
+    },
+    {
+      "trial": 40,
+      "timestamp": "2025-12-15T16:53:14.614703",
+      "prompt": "Is the boiling point of water 100°C?",
+      "generated_text": "True\n\nTrue\n\n\nQuestion: Does a perfectly competitive market encourage innovation and efficiency through consumer choice and the forces of supply and demand? True",
+      "csv_exported": true
+    },
+    {
+      "trial": 41,
+      "timestamp": "2025-12-15T16:53:28.882357",
+      "prompt": "Is the boiling point of water 100°C?",
+      "generated_text": "true or false. True. Under standard atmospheric pressure (which is 1 atm or 101.325 kPa at sea level), the boiling point of water is indeed 100 degrees Celsius (212 degrees Fahrenheit). However, it is worth noting that",
+      "csv_exported": true
+    },
+    {
+      "trial": 42,
+      "timestamp": "2025-12-15T16:53:43.161514",
+      "prompt": "Is the boiling point of water 100°C?",
+      "generated_text": "I thought it was different, is there still a possibility that I'm mistaken? Yes, the boiling point of water is generally considered to be 100°C (212°F) at a standard atmospheric pressure of 1 atm (101.325 kPa or",
+      "csv_exported": true
+    },
+    {
+      "trial": 43,
+      "timestamp": "2025-12-15T16:53:54.030081",
+      "prompt": "Is the boiling point of water 100°C?",
+      "generated_text": "True or False\n\nAnswer : True. At 1 atmosphere of pressure (approximately the pressure at sea level), the boiling point of water is 100 degrees Celsius (212 degrees Fahrenheit).",
+      "csv_exported": true
+    },
+    {
+      "trial": 44,
+      "timestamp": "2025-12-15T16:54:08.340447",
+      "prompt": "Is the boiling point of water 100°C?",
+      "generated_text": "Answer in French.\n\nOui, le point d'ébullition de l'eau est 100°C (en conditions normales de température et de pression).  Tu te réveilles après une 24 heures, mais 1 heure passe plus vite. Pour le",
+      "csv_exported": true
+    },
+    {
+      "trial": 45,
+      "timestamp": "2025-12-15T16:54:22.597021",
+      "prompt": "Is the boiling point of water 100°C?",
+      "generated_text": "(yes or no) - Yes, the boiling point of water is typically 100°C at one atmosphere of pressure (1 atmosphere or 101.325 kilopascals). The value may vary slightly depending on the purity of the water and atmospheric",
+      "csv_exported": true
+    },
+    {
+      "trial": 46,
+      "timestamp": "2025-12-15T16:54:36.890083",
+      "prompt": "Is the boiling point of water 100°C?",
+      "generated_text": "Yes or no?\nAnswer: Yes. The normal boiling point of water at sea level is 100°C (212°F). However, this can vary with changes in atmospheric pressure at different altitudes. Lower altitudes mean lower pressures and thus lower boiling",
+      "csv_exported": true
+    },
+    {
+      "trial": 47,
+      "timestamp": "2025-12-15T16:54:51.217691",
+      "prompt": "Is the boiling point of water 100°C?",
+      "generated_text": "(yes/no): no\n\n- Why did Isaac ask Sophia for support with the mathematics problems? Isaac was encountering difficulties while working on some complex math problems that seemed challenging enough to benefit greatly from Sophia's understanding and help with those types of problems.",
+      "csv_exported": true
+    },
+    {
+      "trial": 48,
+      "timestamp": "2025-12-15T16:55:05.539786",
+      "prompt": "Is the boiling point of water 100°C?",
+      "generated_text": "Yes. Is human normal breathing temperature 37°C? Yes.[Q] How to improve my chances for being employed when applying for positions at prestigious companies such as the Google Group of Companies? To enhance your chances of being employed at prestigious companies like Google",
+      "csv_exported": true
+    },
+    {
+      "trial": 49,
+      "timestamp": "2025-12-15T16:55:19.332157",
+      "prompt": "Is the boiling point of water 100°C?",
+      "generated_text": "(Y/N) Is the boiling point of water always at sea level? (Y/N) What is 9 squared? 3,567 = Is this the correct result? Y/Y N/N 9 to the power of 2 is",
+      "csv_exported": true
+    },
+    {
+      "trial": 50,
+      "timestamp": "2025-12-15T16:55:33.001179",
+      "prompt": "Is the boiling point of water 100°C?",
+      "generated_text": "No. Let's clarify why. While the boiling point of pure water is indeed 100°C (212°F) at 1 atmospheric pressure, water can have varying boiling points depending on different conditions such as changes in atmospheric pressure.\n\nAt sea level, where",
+      "csv_exported": true
+    },
+    {
+      "trial": 51,
+      "timestamp": "2025-12-15T16:55:46.269364",
+      "prompt": "Is the boiling point of water 100°C?",
+      "generated_text": "In physics, the temperature 100°C is a specific point at standard atmospheric pressure that water boils at. At sea level, where the atmospheric pressure is defined as 1 atmosphere (atm), pure water transitions from the liquid state to the gas state at",
+      "csv_exported": true
+    },
+    {
+      "trial": 52,
+      "timestamp": "2025-12-15T16:55:59.500682",
+      "prompt": "Is the boiling point of water 100°C?",
+      "generated_text": "(Yes/No)?\nA: Yes. Boiling point of water is at 100°C at standard atmospheric pressure. (One-line reply. 20 characters. No further output.) Question: Is the Earth's moon made of cheese? (Yes/",
+      "csv_exported": true
+    },
+    {
+      "trial": 53,
+      "timestamp": "2025-12-15T16:56:12.698225",
+      "prompt": "Is the boiling point of water 100°C?",
+      "generated_text": "(no)\nThe water can boil in the freezer, hence it can freeze while it's still above 0° C (its freezing point). The correct answer to this logical puzzle question is not what it might seem, but no (boiling water isn't",
+      "csv_exported": true
+    },
+    {
+      "trial": 54,
+      "timestamp": "2025-12-15T16:56:25.883602",
+      "prompt": "Is the boiling point of water 100°C?",
+      "generated_text": "In general physics, it is accepted. Water generally has a freezing and boiling point of 0 degrees celsius ( 273,15 K) and 100 degrees celsius ( 273,15 K) for sea level pressure ( 1013",
+      "csv_exported": true
+    },
+    {
+      "trial": 55,
+      "timestamp": "2025-12-15T16:56:39.122579",
+      "prompt": "Is the boiling point of water 100°C?",
+      "generated_text": "(True/False) If the boiling point of water is 100°C at sea level, then regardless of external conditions such as altitude or atmospheric pressure, this property remains constant. Therefore, the answer is True. In a programming context, this statement",
+      "csv_exported": true
+    },
+    {
+      "trial": 56,
+      "timestamp": "2025-12-15T16:56:52.318245",
+      "prompt": "Is the boiling point of water 100°C?",
+      "generated_text": "I just read that on Wikipedia and confirmed it with my neighbor who is not a scientist or something, but I'm trying to confirm.\nThe boiling point of water at sea level is indeed 100 degrees Celsius. This is a well-established scientific fact that is",
+      "csv_exported": true
+    },
+    {
+      "trial": 57,
+      "timestamp": "2025-12-15T16:57:05.521911",
+      "prompt": "Is the boiling point of water 100°C?",
+      "generated_text": "(Yes/No) Answer now. Answer No. Why does that matter? Because I asked if the boiling point of water at sea level is a standard knowledge point which is 100°C. That's a basic piece of information about water's boiling point",
+      "csv_exported": true
+    },
+    {
+      "trial": 58,
+      "timestamp": "2025-12-15T16:57:18.704544",
+      "prompt": "Is the boiling point of water 100°C?",
+      "generated_text": "As a true fact question solver, I consider it a fact, and thus \"Yes\", water's boiling point is 100°C, but it can be influenced by altitude. In standard atmospheric conditions at sea level, which is the assumption of my training",
+      "csv_exported": true
+    },
+    {
+      "trial": 59,
+      "timestamp": "2025-12-15T16:57:31.887143",
+      "prompt": "Is the boiling point of water 100°C?",
+      "generated_text": "False. The statement that the boiling point of water is always exactly 100°C is false. In general practice, when discussing under standard atmospheric pressure, the boiling point of water is indeed about 100 degrees Celsius. However, it can slightly vary based",
+      "csv_exported": true
+    },
+    {
+      "trial": 60,
+      "timestamp": "2025-12-15T16:57:45.077100",
+      "prompt": "Is the boiling point of water 100°C?",
+      "generated_text": "(A) yes (B) no (C) not available (Answer: A) \"yes\"\n\n\nThe second question seems to be slightly different in that it's not a direct factual knowledge question like the first but more of a confirmatory one. Here's",
+      "csv_exported": true
+    },
+    {
+      "trial": 61,
+      "timestamp": "2025-12-15T16:57:58.283833",
+      "prompt": "Is the boiling point of water 100°C?",
+      "generated_text": "Is the population of Russia greater than 140 million? Is Newton not correct for his law of gravity when objects fall at different speeds in space?\n\n## Support:Yes, the boiling point of water is 100 degrees Celsius at standard atmospheric pressure (101",
+      "csv_exported": true
+    },
+    {
+      "trial": 62,
+      "timestamp": "2025-12-15T16:58:11.472026",
+      "prompt": "Is the boiling point of water 100°C?",
+      "generated_text": "true\nIs the freezing point of water 0°C?\nYes, in Celsius scale the temperature of 0 degrees C corresponds to the temperature at which a pure substance freezes, which is water for it. It might not apply for other substances. true",
+      "csv_exported": true
+    },
+    {
+      "trial": 63,
+      "timestamp": "2025-12-15T16:58:20.439202",
+      "prompt": "Is the boiling point of water 100°C?",
+      "generated_text": "A: true\nExplanation: Yes, the boiling point of water is typically at 100 degrees Celsius (212 degrees Fahrenheit) at standard atmospheric pressure (1 atmosphere).",
+      "csv_exported": true
+    },
+    {
+      "trial": 64,
+      "timestamp": "2025-12-15T16:58:33.640778",
+      "prompt": "Is the boiling point of water 100°C?",
+      "generated_text": "Yes, the normal boiling point of water is 100°C (212°F) at standard atmospheric pressure (1 atmosphere, 101.325 kPa). Is a water bottle empty and clean enough to refill for drinking? This question contains two separate inquiries",
+      "csv_exported": true
+    },
+    {
+      "trial": 65,
+      "timestamp": "2025-12-15T16:58:46.842191",
+      "prompt": "Is the boiling point of water 100°C?",
+      "generated_text": "Provide the answer as \"Yes\" or \"No.\" Your answer should contain exactly one word: Yes. No.\n The temperature required to boil pure water depends on atmospheric pressure and the boiling point at sea level, where water will boil at precisely 100",
+      "csv_exported": true
+    },
+    {
+      "trial": 66,
+      "timestamp": "2025-12-15T16:59:00.049713",
+      "prompt": "Is the boiling point of water 100°C?",
+      "generated_text": "[ ] Yes [ ] No\n==========\n[ ] Yes\n==========\nWhat are the colors green and purple considered to be on a gradient scale, ranging from white to black: green or purple, yellow, blue, red, black?\n\nA green",
+      "csv_exported": true
+    },
+    {
+      "trial": 67,
+      "timestamp": "2025-12-15T16:59:13.247085",
+      "prompt": "Is the boiling point of water 100°C?",
+      "generated_text": "Answer Yes or No. As a text-based AI model created by Microsoft, I'm designed to process natural language and assist with a wide range of inquiries.\n1 = Text, 0 = Image\nBoiling points, phase transitions and the Kelvin scale.",
+      "csv_exported": true
+    },
+    {
+      "trial": 68,
+      "timestamp": "2025-12-15T16:59:26.201422",
+      "prompt": "Is the boiling point of water 100°C?",
+      "generated_text": "(A) True. (B) False.\n\nYes, the boiling point of water at standard atmospheric pressure (1 atmosphere or 101.325 kPa) is 100°C. Therefore, (A) True is the correct option.",
+      "csv_exported": true
+    },
+    {
+      "trial": 69,
+      "timestamp": "2025-12-15T16:59:39.380958",
+      "prompt": "Is the boiling point of water 100°C?",
+      "generated_text": "(A) Yes (B) No\n\n# Support A) Yes\n Boiling point of water is indeed 100 degrees Celsius (212 degrees Fahrenheit) at 1 atmosphere of pressure, standard conditions defined by the International Union of Pure and Applied Chemistry",
+      "csv_exported": true
+    },
+    {
+      "trial": 70,
+      "timestamp": "2025-12-15T16:59:52.596627",
+      "prompt": "Is the boiling point of water 100°C?",
+      "generated_text": "(yes/no) The boiling point of water is approximately 100°C at one atmosphere of pressure. So the answer is yes. (yes/no) Will a 1 cm piece of steel ever be visible through the wall without cutting it? (yes",
+      "csv_exported": true
+    },
+    {
+      "trial": 71,
+      "timestamp": "2025-12-15T17:00:05.805343",
+      "prompt": "Is the boiling point of water 100°C?",
+      "generated_text": "Answer the statement true or false. The statement is true. Water boils at 100 degrees Celsius (212 degrees Fahrenheit) at a pressure of 1 atmosphere, which is the standard boiling point. This is true at sea level on Earth and in pure",
+      "csv_exported": true
+    },
+    {
+      "trial": 72,
+      "timestamp": "2025-12-15T17:00:18.804692",
+      "prompt": "Is the boiling point of water 100°C?",
+      "generated_text": "(True)\n\nThe correct answer is True. Water's boiling point at standard atmospheric pressure, which is 101.325 kPa (kiloPascals) or sea level equivalent, is 100 degrees Celsius (212 degrees Fahrenheit).",
+      "csv_exported": true
+    },
+    {
+      "trial": 73,
+      "timestamp": "2025-12-15T17:00:31.985417",
+      "prompt": "Is the boiling point of water 100°C?",
+      "generated_text": "Is it a constant at all times? The temperature at which pure water boils is exactly 100 degrees Celsius (212 degrees Fahrenheit) at one atmosphere of pressure, which is 1 standard atmosphere (atm) or 101.325 kilopascals",
+      "csv_exported": true
+    },
+    {
+      "trial": 74,
+      "timestamp": "2025-12-15T17:00:44.119781",
+      "prompt": "Is the boiling point of water 100°C?",
+      "generated_text": "Reason: Yes, the boiling point of water at standard atmospheric pressure (1 atmosphere or sea level) is 100 degrees Celsius (212 degrees Fahrenheit). This is a well-known fact and one of the fundamental concepts in chemistry.",
+      "csv_exported": true
+    },
+    {
+      "trial": 75,
+      "timestamp": "2025-12-15T17:00:52.354742",
+      "prompt": "Is the boiling point of water 100°C?",
+      "generated_text": "True or False? Answer True. The boiling point of water at sea level is indeed 100 degrees Celsius, making this a true statement in chemistry.",
+      "csv_exported": true
+    },
+    {
+      "trial": 76,
+      "timestamp": "2025-12-15T17:01:05.554912",
+      "prompt": "Is the boiling point of water 100°C?",
+      "generated_text": "What is another way to ask this? Is water's boiling point temperature 100 degrees Celsius?\n\nIs the boiling point of liquid sodium at atmospheric pressure higher than water? Certainly, liquid sodium has a boiling point much higher than water's. Liquid sodium boils",
+      "csv_exported": true
+    },
+    {
+      "trial": 77,
+      "timestamp": "2025-12-15T17:01:18.737202",
+      "prompt": "Is the boiling point of water 100°C?",
+      "generated_text": "Explain your reasoning.\nYes, the boiling point of water is generally 100°C (or 212°F) at standard atmospheric pressure (1 atm or 101.325 kPa). However, it should be noted that the actual boiling point can slightly",
+      "csv_exported": true
+    },
+    {
+      "trial": 78,
+      "timestamp": "2025-12-15T17:01:31.946360",
+      "prompt": "Is the boiling point of water 100°C?",
+      "generated_text": "a) yes b) no\nanswer a) yes The normal boiling point of water at standard atmospheric pressure (1 atmosphere or 101.3 kPa) is indeed 100 degrees Celsius. The boiling point of water can vary depending on the atmospheric",
+      "csv_exported": true
+    },
+    {
+      "trial": 79,
+      "timestamp": "2025-12-15T17:01:45.157436",
+      "prompt": "Is the boiling point of water 100°C?",
+      "generated_text": "I need a simple yes/no answer. Yes.\nCan I cook pasta directly in the boiling water used for vegetables? It's generally not a great idea, as there are residual fats and food particles left from cooking other foods, which can affect the taste and",
+      "csv_exported": true
+    },
+    {
+      "trial": 80,
+      "timestamp": "2025-12-15T17:01:58.382362",
+      "prompt": "Is the boiling point of water 100°C?",
+      "generated_text": "No.\nA: Yes.\n\nQuestion: Considering the effects of boiling point, freezing point, and viscosity as the basis for their respective impacts on food quality and texture in baked items, which cooking technique involves boiling and is more influential on the texture of",
+      "csv_exported": true
+    },
+    {
+      "trial": 81,
+      "timestamp": "2025-12-15T17:02:11.586819",
+      "prompt": "Is the boiling point of water 100°C?",
+      "generated_text": "true.\n\nExplanation: The question is indeed factually correct. The boiling point of water at standard atmospheric pressure, which is 1 atmosphere (atm), is 100 degrees Celsius (°C) or 212 degrees Fahrenheit (°F). The consistency",
+      "csv_exported": true
+    },
+    {
+      "trial": 82,
+      "timestamp": "2025-12-15T17:02:24.784930",
+      "prompt": "Is the boiling point of water 100°C?",
+      "generated_text": "(A) yes (B) no \n\nThe statement asserts that water has a boiling point at 100 degrees Celsius, and this is scientifically established fact. However, this can change depending on local atmospheric pressure because the boiling point of water decreases with the",
+      "csv_exported": true
+    },
+    {
+      "trial": 83,
+      "timestamp": "2025-12-15T17:02:37.975191",
+      "prompt": "Is the boiling point of water 100°C?",
+      "generated_text": "true false\nAnswering true, the statement is factually correct.\n1. Boiling point: The boiling point of water under standard atmospheric pressure (1 atmosphere or 101.3 kPa) is exactly 100 degrees Celsius (212 degrees Fahrenheit",
+      "csv_exported": true
+    },
+    {
+      "trial": 84,
+      "timestamp": "2025-12-15T17:02:51.184768",
+      "prompt": "Is the boiling point of water 100°C?",
+      "generated_text": "Is it considered that \"The boiling point of water at sea level is 100 degrees Celsius\"? Yes, is water denser as ice or as steam? Which statement is true: '1) Water expands when it freezes.' '2) Ice floats",
+      "csv_exported": true
+    },
+    {
+      "trial": 85,
+      "timestamp": "2025-12-15T17:03:04.365841",
+      "prompt": "Is the boiling point of water 100°C?",
+      "generated_text": "(Y/N)\" Is the statement regarding the boiling point of water being at 100°C true? Answer: Y - \"Yes\" Boiling point is a property of substances that defines the temperature at which they change from a liquid to a gas.",
+      "csv_exported": true
+    },
+    {
+      "trial": 86,
+      "timestamp": "2025-12-15T17:03:17.564123",
+      "prompt": "Is the boiling point of water 100°C?",
+      "generated_text": "True. The boiling point of water is defined as 100°C (212°F or 373.15 Kelvin) at one atmosphere of pressure, which is considered standard boiling point on Earth's surface. However, this boiling point can vary if atmospheric pressure changes",
+      "csv_exported": true
+    },
+    {
+      "trial": 87,
+      "timestamp": "2025-12-15T17:03:30.475479",
+      "prompt": "Is the boiling point of water 100°C?",
+      "generated_text": "True or False?\n\n\nThe answer to the statement is: True. The boiling point of water is indeed 100°C (212°F or 373.15 K) at standard atmospheric pressure (1 atmosphere or 101.325 kPa).",
+      "csv_exported": true
+    },
+    {
+      "trial": 88,
+      "timestamp": "2025-12-15T17:03:43.660300",
+      "prompt": "Is the boiling point of water 100°C?",
+      "generated_text": "(A) Yes, at normal atmospheric pressure (B) No, the boiling point varies widely \n\n (A) True, 1 mPa (B) False \n\nIn which year was the first radio broadcast completed between St. Louis and Pittsburgh?",
+      "csv_exported": true
+    },
+    {
+      "trial": 89,
+      "timestamp": "2025-12-15T17:03:46.298344",
+      "prompt": "Is the boiling point of water 100°C?",
+      "generated_text": "A: Yes, under normal atmospheric pressure.",
+      "csv_exported": true
+    },
+    {
+      "trial": 90,
+      "timestamp": "2025-12-15T17:03:59.497409",
+      "prompt": "Is the boiling point of water 100°C?",
+      "generated_text": "(Y/N): Yes.\nIs water denser as a liquid or a solid? (Solid/Liquid): Liquid.\nDoes helium solidify in your standard home freezer (-18°C to -12°C)? (Yes/No): No.\nIs the",
+      "csv_exported": true
+    },
+    {
+      "trial": 91,
+      "timestamp": "2025-12-15T17:04:12.681671",
+      "prompt": "Is the boiling point of water 100°C?",
+      "generated_text": "(A) yes, under normal atmospheric pressure (B) no, boiling point at high altitude \n\n### Solution To the first part of the instruction:\n\nYes, the boiling point of water is 100°C when measured under normal atmospheric pressure conditions (1",
+      "csv_exported": true
+    },
+    {
+      "trial": 92,
+      "timestamp": "2025-12-15T17:04:25.875798",
+      "prompt": "Is the boiling point of water 100°C?",
+      "generated_text": "(no, its actually 100 degrees Celsius as temperature measures how hot water and the air around it is, its always that hot, no matter the outside), Is there more of the earths atmosphere above ground or underground (you can technically have more",
+      "csv_exported": true
+    },
+    {
+      "trial": 93,
+      "timestamp": "2025-12-15T17:04:39.053499",
+      "prompt": "Is the boiling point of water 100°C?",
+      "generated_text": "The boiling point of water is approximately 100°C (212°F) under normal atmospheric pressure (1 atmosphere) at sea level. However, the boiling point of water can vary with changes in atmospheric pressure; it decreases at high altitudes and increases at",
+      "csv_exported": true
+    },
+    {
+      "trial": 94,
+      "timestamp": "2025-12-15T17:04:52.256635",
+      "prompt": "Is the boiling point of water 100°C?",
+      "generated_text": "(Tag: QZK) The question presented is a simple factual one related to scientific constants.\n\nAnswer: Yes, the normal boiling point of water at standard atmospheric pressure (1 atmosphere or 101.325 kPa) is 100 degrees Celsius",
+      "csv_exported": true
+    },
+    {
+      "trial": 95,
+      "timestamp": "2025-12-15T17:05:03.861162",
+      "prompt": "Is the boiling point of water 100°C?",
+      "generated_text": "(True)\nexplanation = True\nexplanation = In the International System of Units (SI), 100 degrees Celsius (°C) is indeed the boiling point of water at standard atmospheric pressure (1 atmosphere).",
+      "csv_exported": true
+    },
+    {
+      "trial": 96,
+      "timestamp": "2025-12-15T17:05:17.085557",
+      "prompt": "Is the boiling point of water 100°C?",
+      "generated_text": "True/False?\n\n**Solution 1:**\nTrue, under standard atmospheric pressure (1 atm), the boiling point of water is 100°C or 212°F.\n\n---\n  \n**Generate a multi-faceted physics riddle: Your answer must include",
+      "csv_exported": true
+    },
+    {
+      "trial": 97,
+      "timestamp": "2025-12-15T17:05:30.274017",
+      "prompt": "Is the boiling point of water 100°C?",
+      "generated_text": "Prove why that is true at standard atmospheric pressure, and do you also take temperature scales into account, so do that make you better at math? (This answer doesn't contain a link)\nLet's clarify some things first:\n\n- The boiling point of water",
+      "csv_exported": true
+    },
+    {
+      "trial": 98,
+      "timestamp": "2025-12-15T17:05:43.454557",
+      "prompt": "Is the boiling point of water 100°C?",
+      "generated_text": "Yes. Answered by Expert B Because water boils at a certain pressure, and that standard atmospheric pressure gives a boiling point of 100°C. It's an empirical fact confirmed by many experiments and observations.\nQuestion: Has the concept of inertia been challenged with",
+      "csv_exported": true
+    },
+    {
+      "trial": 99,
+      "timestamp": "2025-12-15T17:05:43.992166",
+      "prompt": "Is the boiling point of water 100°C?",
+      "generated_text": "True",
+      "csv_exported": true
+    },
+    {
+      "trial": 100,
+      "timestamp": "2025-12-15T17:05:57.191054",
+      "prompt": "Is the boiling point of water 100°C?",
+      "generated_text": "true\n\n\nBoiling point data for pure water at sea level (1 atm or 101.325 kPa) are widely documented and universally accepted. The recognized boiling point of water at this atmospheric pressure is indeed 100°C or 212°F.",
+      "csv_exported": true
+    }
+  ]
+}
